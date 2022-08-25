@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Builder\Class_;
 
 class Cart extends Model
 {
@@ -17,4 +18,24 @@ class Cart extends Model
     protected $fillable = [
         'product_id', 'customer_id', 'price', 'quantity', 'weight'
     ];
+
+    /**
+     * product
+     *
+     * @return void
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    /**
+     * customer
+     *
+     * @return void
+     */
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 }

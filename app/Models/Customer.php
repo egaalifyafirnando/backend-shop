@@ -28,4 +28,24 @@ class Customer extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * invoices
+     *
+     * @return void
+     */
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
+    /**
+     * carts
+     *
+     * @return void
+     */
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
