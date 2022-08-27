@@ -3,27 +3,32 @@
 @section('content')
     <div class="container">
 
-        <!-- Outer Row -->
+        {{-- Outer Row --}}
         <div class="row justify-content-center">
-
             <div class="col-md-4">
                 <div class="img-logo text-center mt-5">
                     <img src="{{ asset('assets/img/company.png') }}" style="width: 80px;">
                 </div>
+
                 <div class="card o-hidden border-0 shadow-lg mb-3 mt-5">
                     <div class="card-body p-4">
+
+                        {{-- alert --}}
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
+
                         <div class="text-center">
                             <h1 class="h5 text-gray-900 mb-3">UPDATE PASSWORD</h1>
                         </div>
 
+                        {{-- route password.update obtained from fortify without setup manually --}}
                         <form method="POST" action="{{ route('password.update') }}">
                             @csrf
 
+                            {{-- request token --}}
                             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
                             <div class="form-group">
@@ -32,6 +37,8 @@
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ $request->email ?? old('email') }}" required autocomplete="email" autofocus
                                     placeholder="Masukkan Alamat Elamil">
+
+                                {{-- error message --}}
                                 @error('email')
                                     <div class="alert alert-danger mt-2">
                                         <strong>{{ $message }}</strong>
@@ -44,6 +51,8 @@
                                 <input id="password" type="password"
                                     class="form-control @error('password') is-invalid @enderror" name="password" required
                                     autocomplete="new-password" placeholder="Password Baru">
+
+                                {{-- error message --}}
                                 @error('password')
                                     <div class="alert alert-danger mt-2">
                                         <strong>{{ $message }}</strong>
@@ -58,14 +67,12 @@
                                     placeholder="Konfirmasi Password Baru">
                             </div>
 
+                            {{-- button submit --}}
                             <button type="submit" class="btn btn-primary btn-block">UPDATE PASSWORD</button>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 @endsection
