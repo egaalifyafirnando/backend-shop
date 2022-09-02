@@ -33,10 +33,8 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold text-uppercase">Email Address</label>
-                                <input id="email" type="email"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ $request->email ?? old('email') }}" required autocomplete="email" autofocus
-                                    placeholder="Masukkan Alamat Elamil">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ $request->email ?? old('email') }}" required autocomplete="email" autofocus placeholder="Masukkan Alamat Elamil">
 
                                 {{-- error message --}}
                                 @error('email')
@@ -48,9 +46,8 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold text-uppercase">Password</label>
-                                <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password" required
-                                    autocomplete="new-password" placeholder="Password Baru">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"
+                                    placeholder="Password Baru">
 
                                 {{-- error message --}}
                                 @error('password')
@@ -62,8 +59,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold text-uppercase">Konfirmasi Password</label>
-                                <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password"
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"
                                     placeholder="Konfirmasi Password Baru">
                             </div>
 

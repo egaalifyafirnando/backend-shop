@@ -15,9 +15,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -93,22 +91,17 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li
-                class="nav-item {{ Request::is('admin/category*') ? ' active' : '' }} {{ Request::is('admin/product*') ? ' active' : '' }}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item {{ Request::is('admin/category*') ? ' active' : '' }} {{ Request::is('admin/product*') ? ' active' : '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-shopping-bag"></i>
                     <span>PRODUK</span>
                 </a>
-                <div id="collapseTwo"
-                    class="collapse {{ Request::is('admin/category*') ? ' show' : '' }} {{ Request::is('admin/product*') ? ' show' : '' }}"
+                <div id="collapseTwo" class="collapse {{ Request::is('admin/category*') ? ' show' : '' }} {{ Request::is('admin/product*') ? ' show' : '' }}"
                     aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">KATEGORI & PRODUK</h6>
-                        <a class="collapse-item {{ Request::is('admin/category*') ? ' active' : '' }}"
-                            href="#">KATEGORI</a>
-                        <a class="collapse-item {{ Request::is('admin/product*') ? ' active' : '' }}"
-                            href="#">PRODUK</a>
+                        <a class="collapse-item {{ Request::is('admin/category*') ? ' active' : '' }}" href="{{ route('admin.category.index') }}">KATEGORI</a>
+                        <a class="collapse-item {{ Request::is('admin/product*') ? ' active' : '' }}" href="#">PRODUK</a>
                     </div>
                 </div>
             </li>
@@ -120,31 +113,36 @@
             <li class="nav-item {{ Request::is('admin/order*') ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="fas fa-shopping-cart"></i>
-                    <span>ORDERS</span></a>
+                    <span>ORDERS</span>
+                </a>
             </li>
 
             <li class="nav-item {{ Request::is('admin/customer*') ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="fas fa-users"></i>
-                    <span>CUSTOMERS</span></a>
+                    <span>CUSTOMERS</span>
+                </a>
             </li>
 
             <li class="nav-item {{ Request::is('admin/slider*') ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="fas fa-laptop"></i>
-                    <span>SLIDERS</span></a>
+                    <span>SLIDERS</span>
+                </a>
             </li>
 
             <li class="nav-item {{ Request::is('admin/profile*') ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="fas fa-user-circle"></i>
-                    <span>PROFILE</span></a>
+                    <span>PROFILE</span>
+                </a>
             </li>
 
             <li class="nav-item {{ Request::is('admin/user*') ? ' active' : '' }}">
                 <a class="nav-link" href="#">
                     <i class="fas fa-users"></i>
-                    <span>USERS</span></a>
+                    <span>USERS</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -180,19 +178,14 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                                 <img class="img-profile rounded-circle" src="{{ auth()->user()->avatar_url }}">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    LOGOUT
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> LOGOUT
                                 </a>
                             </div>
                         </li>
@@ -231,8 +224,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
