@@ -40,5 +40,9 @@ Route::prefix('admin')->group(function () {
 
         // ROUTE ORDER
         Route::resource('/order', OrderController::class, ['except' => ['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'admin']);
+
+        // ROUTE CUSTOMER
+        //route customer
+        Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
     });
 });
