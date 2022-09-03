@@ -29,10 +29,13 @@ Route::prefix('admin')->group(function () {
     //group route with middleware "auth"
     Route::group(['middleware' => 'auth'], function () {
 
-        //route dashboard
+        // ROUTE DASHBOARD
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
 
-        // route category
+        // ROUTE CATEGORY
         Route::resource('/category', CategoryController::class, ['as' => 'admin']);
+
+        // ROUTE PRODUCT
+        Route::resource('/product', ProductController::class, ['as' => 'admin']);
     });
 });
