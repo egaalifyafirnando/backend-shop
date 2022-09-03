@@ -37,5 +37,8 @@ Route::prefix('admin')->group(function () {
 
         // ROUTE PRODUCT
         Route::resource('/product', ProductController::class, ['as' => 'admin']);
+
+        // ROUTE ORDER
+        Route::resource('/order', OrderController::class, ['except' => ['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'admin']);
     });
 });
