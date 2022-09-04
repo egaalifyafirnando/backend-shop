@@ -46,5 +46,8 @@ Route::prefix('admin')->group(function () {
 
         // ROUTE SLIDER
         Route::resource('/slider', SliderController::class, ['except' => ['create', 'edit', 'update', 'show'], 'as' => 'admin']);
+
+        // ROUTE PROFILE
+        Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile.index');
     });
 });
