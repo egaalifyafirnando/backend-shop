@@ -49,5 +49,8 @@ Route::prefix('admin')->group(function () {
 
         // ROUTE PROFILE
         Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile.index');
+
+        // ROUTE USER
+        Route::resource('/user', UserController::class, ['except' => ['show'], 'as' => 'admin']);
     });
 });
