@@ -42,7 +42,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/order', OrderController::class, ['except' => ['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'admin']);
 
         // ROUTE CUSTOMER
-        //route customer
         Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
+
+        // ROUTE SLIDER
+        Route::resource('/slider', SliderController::class, ['except' => ['create', 'edit', 'update', 'show'], 'as' => 'admin']);
     });
 });
