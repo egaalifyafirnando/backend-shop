@@ -26,3 +26,9 @@ Route::get('/category/{slug?}', [CategoryController::class, 'show'])->name('cust
 Route::get('/categoryHeader', [CategoryController::class, 'categoryHeader'])->name('customer.category.categoryHeader');
 Route::get('/products', [ProductController::class, 'index'])->name('customer.product.index');
 Route::get('/product/{slug?}', [ProductController::class, 'show'])->name('customer.product.show');
+Route::get('/cart', [CartController::class, 'index'])->name('customer.cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('customer.cart.store');
+Route::get('/cart/total', [CartController::class, 'getCartTotal'])->name('customer.cart.total');
+Route::get('/cart/totalWeight', [CartController::class, 'getCartTotalWeight'])->name('customer.cart.getCartTotalWeight');
+Route::post('/cart/remove', [CartController::class, 'removeCart'])->name('customer.cart.remove');
+Route::post('/cart/removeAll', [CartController::class, 'removeAllCart'])->name('customer.cart.removeAll');
