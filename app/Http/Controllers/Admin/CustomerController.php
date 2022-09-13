@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+    /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
         // GET CUSTOMERS ORDER BY LATEST

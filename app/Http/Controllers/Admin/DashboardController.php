@@ -15,21 +15,22 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // count invoice
+        // COUNT INVOICE FILTER BY STATUS
         $pending = Invoice::where('status', 'pending')->count();
         $success = Invoice::where('status', 'success')->count();
         $expired = Invoice::where('status', 'expired')->count();
         $failed = Invoice::where('status', 'failed')->count();
 
-        // year and month
+        // YEAR AND MONTH
         $year = date('Y');
         $month = date('m');
 
-        // statistic revenue
+        // STATISTIC REVENUE
         $revenueMonth = Invoice::where('status', 'success')->whereMonth('created_at', '=', $month)->whereYear('created_at', $year)->sum('grand_total');
         $revenueYear  = Invoice::where('status', 'success')->whereYear('created_at', $year)->sum('grand_total');
         $revenueAll   = Invoice::where('status', 'success')->sum('grand_total');
 
+        // RETURN VIEW AND PASSING ALL DATA
         return view('admin.dashboard.index', compact('pending', 'success', 'expired', 'failed', 'revenueMonth', 'revenueYear', 'revenueAll'));
     }
 }

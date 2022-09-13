@@ -17,12 +17,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // get categories order by latest
+        // GET CATEGORIES ORDER BY LATEST
         $categories = Category::latest()->when(request()->q, function ($categories) {
             $categories = $categories->where('name', 'like', '%' . request()->q . '%');
         })->paginate(10);
 
-        // return view and passing data 'categories'
+        // RETURN VIEW AND PASSING DATA 'CATEGORIES'
         return view('admin.category.index', compact('categories'));
     }
 
@@ -33,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // return view create
+        // RETURN VIEW CREATE
         return view('admin.category.create');
     }
 
@@ -45,28 +45,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // validation rules
+        // VALIDATION RULES
         $this->validate($request, [
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2000',
             'name' => 'required|unique:categories'
         ]);
 
-        // upload image to storage
+        // UPLOAD IMAGE TO STORAGE
         $image = $request->file('image');
         $image->storeAs('public/categories', $image->hashName());
 
-        // save to DB
+        // SAVE TO DB
         $category = Category::create([
             'image' => $image->hashName(),
             'name' => $request->name,
             'slug' => Str::slug($request->name, '-'),
         ]);
 
+        // REDIRECT WITH MESSAGE STATUS
         if ($category) {
-            // redirect with success message
             return redirect()->route('admin.category.index')->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
-            // redirect with failed message
             return redirect()->route('admin.category.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
@@ -79,7 +78,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        // return view edit with passing data category
+        // RETURN VIEW EDIT AND PASSING DATA 'CATEGORY'
         return view('admin.category.edit', compact('category'));
     }
 
@@ -92,29 +91,35 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        // validation rules
+        // VALIDATION RULES
         $this->validate($request, [
             'name' => 'required|unique:categories,name,' . $category->id
         ]);
 
-        // check if image is null
+        // CHECK IF IMAGE IS NULL
         if ($request->file('image') == '') {
-            // update data without image
+            // UPDATE DATA WITHOUT IMAGE
+
+            // FIND CATEGORY BY ID
             $category = Category::findOrFail($category->id);
+            // UPDATE THIS CATEGORY
             $category->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name, '-')
             ]);
         } else {
-            // delete old image
+            // UPDATE WITH IMAGE
+
+            // DELETE OLD IMAGE
             Storage::disk('local')->delete('public/categories/' . basename($category->image));
 
-            // upload new image
+            // UPLOAD NEW IMAGE FROM REQUEST
             $image = $request->file('image');
             $image->storeAs('public/categories', $image->hashName());
 
-            // update with new image
+            // FIND CATEGORY BY ID
             $category = Category::findOrFail($category->id);
+            // UPDATE THIS CATEGORY
             $category->update([
                 'image' => $image->hashName(),
                 'name' => $request->name,
@@ -122,12 +127,10 @@ class CategoryController extends Controller
             ]);
         }
 
-
+        // REDIRECT WITH MESSAGE STATUS
         if ($category) {
-            // redirect with success message
             return redirect()->route('admin.category.index')->with(['success' => 'Data Berhasil Diperbarui!']);
         } else {
-            // redirect with failed message
             return redirect()->route('admin.category.index')->with(['error' => 'Data Gagal Diperbarui!']);
         }
     }
@@ -140,10 +143,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        // FIND CATEGORY BY ID
         $category = Category::findOrFail($id);
+
+        // DELETE IMAGE FILE FROM STORAGE
         $image = Storage::disk('local')->delete('public/categories/' . basename($category->image));
+
+        // DELETE CATEGORY FROM DB
         $category->delete();
 
+        // REDIRECT WITH MESSAGE STATUS
         if ($category) {
             return response()->json([
                 'status' => 'success'
