@@ -46,7 +46,8 @@ class OrderController extends Controller
         return response()->json([
             'success'   => true,
             'message'   => 'Detail Invoices: ' . auth()->guard('api')->user()->name,
-            'data'      => $invoice
+            'data'      => $invoice,
+            'product'   => $invoice->orders
         ], 200);
     }
 }
