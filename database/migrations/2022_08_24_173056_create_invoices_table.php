@@ -29,6 +29,7 @@ return new class extends Migration
             $table->enum('status', array('pending', 'success', 'failed', 'expired'));
             $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
+            $table->text('note');
             $table->timestamps();
         });
     }

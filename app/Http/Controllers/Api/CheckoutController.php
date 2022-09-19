@@ -64,7 +64,8 @@ class CheckoutController extends Controller
                 'city'          => $this->request->city,
                 'address'       => $this->request->address,
                 'grand_total'   => $this->request->grand_total,
-                'status'        => 'pending'
+                'status'        => 'pending',
+                'note'          => $this->request->note
             ]);
 
             // LOOP CART CUSTOMER
