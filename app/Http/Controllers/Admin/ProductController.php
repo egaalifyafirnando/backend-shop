@@ -76,7 +76,7 @@ class ProductController extends Controller
             'price'          => $request->price,
             'discount'       => $request->discount,
             'keywords'       => $request->keywords,
-            'description'    => $request->description
+            'description'    => $request->description,
         ]);
 
         if ($product) {
@@ -136,7 +136,7 @@ class ProductController extends Controller
                 'price'          => $request->price,
                 'discount'       => $request->discount,
                 'keywords'       => $request->keywords,
-                'description'    => $request->description
+                'description'    => $request->description,
             ]);
         } else {
             // UPDATE WITH IMAGE
@@ -146,6 +146,22 @@ class ProductController extends Controller
             // upload new image
             $image = $request->file('image');
             $image->storeAs('public/products', $image->hashName());
+
+            // UPDATE WITH IMAGE
+            $product = Product::findOrFail($product->id);
+            $product->update([
+                'image'          => $image->hashName(),
+                'title'          => $request->title,
+                'slug'           => Str::slug($request->title, '-'),
+                'category_id'    => $request->category_id,
+                'content'        => $request->content,
+                'unit'           => $request->unit,
+                'weight'         => $request->weight,
+                'price'          => $request->price,
+                'discount'       => $request->discount,
+                'keywords'       => $request->keywords,
+                'description'    => $request->description,
+            ]);
         }
 
         if ($product) {
