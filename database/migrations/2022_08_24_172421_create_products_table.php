@@ -23,6 +23,7 @@ return new class extends Migration
             $table->bigInteger('weight');
             $table->bigInteger('price');
             $table->integer('discount')->nullable();
+            $table->integer('stock');
             $table->timestamps();
         });
     }

@@ -64,7 +64,7 @@ class CheckoutController extends Controller
                 'city'          => $this->request->city,
                 'address'       => $this->request->address,
                 'grand_total'   => $this->request->grand_total,
-                'status'        => 'pending',
+                'status'        => 'pending'
             ]);
 
             // LOOP CART CUSTOMER
@@ -174,6 +174,17 @@ class CheckoutController extends Controller
             $data_transaction->update([
                 'status' => 'success'
             ]);
+
+            // UPDATE STOCK WHEN TRANSACTIONS SUCCESS
+            foreach ($data_transaction->orders()->get() as $order) {
+                // GET PRODUCT
+                $product = \App\Models\Product::whereId($order->product_id)->first();
+
+                // UPDATE STOCK
+                $product->update([
+                    'stock' => $product->stock - $order->qty
+                ]);
+            }
         } elseif ($transaction == 'pending') {
 
 

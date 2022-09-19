@@ -58,6 +58,7 @@ class ProductController extends Controller
             'weight'         => 'required',
             'price'          => 'required',
             'discount'       => 'required',
+            'stock'          => 'required',
         ]);
 
         // UPLOAD IMAGE TO STORAGE
@@ -77,6 +78,7 @@ class ProductController extends Controller
             'discount'       => $request->discount,
             'keywords'       => $request->keywords,
             'description'    => $request->description,
+            'stock'          => $request->stock,
         ]);
 
         if ($product) {
@@ -119,6 +121,7 @@ class ProductController extends Controller
             'weight'         => 'required',
             'price'          => 'required',
             'discount'       => 'required',
+            'stock'          => 'required',
         ]);
 
         // CHECK IF IMAGE IS NULL(?)
@@ -137,6 +140,7 @@ class ProductController extends Controller
                 'discount'       => $request->discount,
                 'keywords'       => $request->keywords,
                 'description'    => $request->description,
+                'stock'          => $request->stock,
             ]);
         } else {
             // UPDATE WITH IMAGE
@@ -161,6 +165,7 @@ class ProductController extends Controller
                 'discount'       => $request->discount,
                 'keywords'       => $request->keywords,
                 'description'    => $request->description,
+                'stock'          => $request->stock,
             ]);
         }
 
