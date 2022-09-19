@@ -149,6 +149,11 @@ class CategoryController extends Controller
         // DELETE IMAGE FILE FROM STORAGE
         $image = Storage::disk('local')->delete('public/categories/' . basename($category->image));
 
+        // LOOP PRODUCT, AND THEN DELETE TOO (BUG SOLVED)
+        foreach ($category->products()->get() as $child) {
+            $child->delete();
+        }
+
         // DELETE CATEGORY FROM DB
         $category->delete();
 
