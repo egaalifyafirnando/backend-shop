@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
             $table->text('note');
+            $table->string('airway_bill')->nullable();
             $table->timestamps();
         });
     }

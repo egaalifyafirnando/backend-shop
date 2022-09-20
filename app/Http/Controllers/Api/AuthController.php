@@ -92,7 +92,7 @@ class AuthController extends Controller
         if (!$token = auth()->guard('api')->attempt($credentials)) {
             return response()->json([
                 'success'   => false,
-                'message'   => 'Email or Password is incorrect.'
+                'message'   => 'Email or Password is incorrect'
             ], 401);
         }
 

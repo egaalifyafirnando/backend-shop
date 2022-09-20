@@ -39,7 +39,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/product', ProductController::class, ['as' => 'admin']);
 
         // ROUTE ORDER
-        Route::resource('/order', OrderController::class, ['except' => ['create', 'store', 'edit', 'update', 'destroy'], 'as' => 'admin']);
+        Route::resource('/order', OrderController::class, ['except' => ['create', 'store', 'edit', 'destroy'], 'as' => 'admin']);
 
         // ROUTE CUSTOMER
         Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
