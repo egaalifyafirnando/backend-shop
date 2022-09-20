@@ -3,7 +3,6 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-12">
@@ -31,6 +30,7 @@
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>ALAMAT EMAIL</label>
@@ -69,8 +69,8 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> UPDATE</button>
-                            <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>
+                            <button class="btn btn-green mr-1 mb-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> UPDATE</button>
+                            <button class="btn btn-gray mb-1" type="reset"><i class="fa fa-redo"></i> RESET</button>
                         </form>
                     </div>
                 </div>

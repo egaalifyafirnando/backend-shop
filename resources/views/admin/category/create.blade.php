@@ -3,7 +3,6 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-12">
@@ -19,7 +18,6 @@
                             <div class="form-group">
                                 <label>GAMBAR</label>
                                 <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
-
                                 @error('image')
                                     <div class="invalid-feedback" style="display: block">
                                         {{ $message }}
@@ -31,7 +29,6 @@
                                 <label>NAMA KATEGORI</label>
                                 <input type="text" name="name" value="{{ old('name') }}" placeholder="Masukkan Nama Kategori"
                                     class="form-control @error('name') is-invalid @enderror">
-
                                 @error('name')
                                     <div class="invalid-feedback" style="display: block">
                                         {{ $message }}
@@ -39,8 +36,8 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> SIMPAN</button>
-                            <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>
+                            <button class="btn btn-green mr-1  mb-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> SIMPAN</button>
+                            <button class="btn btn-gray mb-1" type="reset"><i class="fa fa-redo"></i> RESET</button>
                         </form>
                     </div>
                 </div>

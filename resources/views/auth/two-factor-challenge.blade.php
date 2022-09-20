@@ -1,14 +1,12 @@
-@extends('layouts.auth', ['title' => 'Two Factor Challenge'])
+@extends('layouts.auth', ['title' => 'Forgot Password'])
 
 @section('content')
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-md-4">
                 <div class="img-logo text-center mt-5">
-                    <img src="{{ asset('assets/img/company.png') }}" style="width: 80px;">
+                    <img src="{{ asset('assets/img/company.png') }}" style="width: 180px;">
                 </div>
 
                 <div class="card o-hidden border-0 shadow-lg mb-3 mt-5">
@@ -41,7 +39,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">LOGIN</button>
+                                <button type="submit" class="btn btn-green btn-lg btn-block" tabindex="4">LOGIN</button>
                             </div>
                         </form>
                     </div>

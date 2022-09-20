@@ -3,7 +3,6 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-12">
@@ -18,11 +17,12 @@
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" name="q" placeholder="cari berdasarkan nama customer">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI</button>
+                                        <button type="submit" class="btn btn-green"><i class="fa fa-search"></i> CARI</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -33,23 +33,24 @@
                                         <th scope="col">BERGABUNG</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                     @forelse ($customers as $no => $customer)
                                         <tr>
-                                            <th scope="row" style="text-align: center">{{ ++$no + ($customers->currentPage() - 1) * $customers->perPage() }}</th>
+                                            <th scope="row" style="text-align: center">
+                                                {{ ++$no + ($customers->currentPage() - 1) * $customers->perPage() }}
+                                            </th>
                                             <td>{{ $customer->name }}</td>
                                             <td>{{ $customer->email }}</td>
                                             <td>{{ dateID($customer->created_at) }}</td>
                                         </tr>
 
                                     @empty
-
-                                        <div class="alert alert-danger">
-                                            Data Belum Tersedia!
-                                        </div>
+                                        <div class="alert alert-danger">Data Belum Tersedia!</div>
                                     @endforelse
                                 </tbody>
                             </table>
+
                             <div style="text-align: center">
                                 {{ $customers->links('vendor.pagination.bootstrap-4') }}
                             </div>

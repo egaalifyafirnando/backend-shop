@@ -2,13 +2,11 @@
 
 @section('content')
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-md-4">
                 <div class="img-logo text-center mt-5">
-                    <img src="{{ asset('assets/img/company.png') }}" style="width: 80px;">
+                    <img src="{{ asset('assets/img/company.png') }}" style="width: 180px;">
                 </div>
 
                 <div class="card o-hidden border-0 shadow-lg mb-3 mt-5">
@@ -32,7 +30,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                                <button type="submit" class="btn btn-green btn-lg btn-block" tabindex="4">
                                     CONFIRM PASSWORD
                                 </button>
                             </div>
@@ -40,8 +38,10 @@
                     </div>
                 </div>
 
-                <div class="text-center text-white">
-                    <label><a href="/forgot-password" class="text-white">Lupa Password ?</a></label>
+                <div class="text-center">
+                    <label>
+                        <a href="/forgot-password" class="text-dark">Lupa Password ?</a>
+                    </label>
                 </div>
             </div>
         </div>

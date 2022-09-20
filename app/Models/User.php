@@ -52,7 +52,7 @@ class User extends Authenticatable
     protected function avatarUrl(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->name) . '&background=4e73df&color=ffffff&size=100',
+            get: fn ($value) => 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->name) . '&background=3F7B70&color=ffffff&size=100',
         );
     }
 }

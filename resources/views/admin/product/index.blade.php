@@ -3,7 +3,6 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid mb-5">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-12">
@@ -17,19 +16,18 @@
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <a href="{{ route('admin.product.create') }}" class="btn btn-primary btn-sm" style="padding-top: 10px;">
+                                        <a href="{{ route('admin.product.create') }}" class="btn btn-green btn-sm" style="padding-top: 10px;">
                                             <i class="fa fa-plus-circle"></i> TAMBAH
                                         </a>
                                     </div>
-
                                     <input type="text" class="form-control" name="q" placeholder="cari berdasarkan nama produk">
-
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> CARI</button>
+                                        <button type="submit" class="btn btn-green"><i class="fa fa-search"></i> CARI</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
+
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -49,24 +47,23 @@
                                             <td>{{ $product->title }}</td>
                                             <td>{{ $product->category->name }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-primary">
+                                                <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-sm btn-green mb-1">
                                                     <i class="fa fa-pencil-alt"></i>
                                                 </a>
-
-                                                <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $product->id }}">
+                                                <button onClick="Delete(this.id)" class="btn btn-sm btn-red mb-1" id="{{ $product->id }}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
 
                                     @empty
-
                                         <div class="alert alert-danger">
                                             Data Belum Tersedia!
                                         </div>
                                     @endforelse
                                 </tbody>
                             </table>
+
                             <div style="text-align: center">
                                 {{ $products->links('vendor.pagination.bootstrap-4') }}
                             </div>
@@ -77,13 +74,11 @@
         </div>
     </div>
     <!-- /.container-fluid -->
-
     <script>
         //ajax delete
         function Delete(id) {
             var id = id;
             var token = $("meta[name='csrf-token']").attr("content");
-
             swal({
                 title: "APAKAH KAMU YAKIN ?",
                 text: "INGIN MENGHAPUS DATA INI!",
@@ -95,7 +90,6 @@
                 dangerMode: true,
             }).then(function(isConfirm) {
                 if (isConfirm) {
-
                     //ajax delete
                     jQuery.ajax({
                         url: "/admin/product/" + id,
@@ -132,7 +126,6 @@
                             }
                         }
                     });
-
                 } else {
                     return true;
                 }

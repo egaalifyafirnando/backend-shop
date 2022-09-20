@@ -3,7 +3,6 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-md-12">
@@ -18,6 +17,7 @@
 
                             <div class="form-group">
                                 <label>GAMBAR</label>
+                                <small>direkomendasikan ukuran 1020px x 500px</small>
                                 <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
 
                                 @error('image')
@@ -39,8 +39,8 @@
                                 @enderror
                             </div>
 
-                            <button class="btn btn-primary mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> SIMPAN</button>
-                            <button class="btn btn-warning btn-reset" type="reset"><i class="fa fa-redo"></i> RESET</button>
+                            <button class="btn btn-green mr-1 btn-submit" type="submit"><i class="fa fa-paper-plane"></i> SIMPAN</button>
+                            <button class="btn btn-gray" type="reset"><i class="fa fa-redo"></i> RESET</button>
                         </form>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" style="text-align: center;width: 6%">NO.</th>
-                                        <th scope="col">GAMBAR</th>
+                                        <th scope="col" style="width: 25%;text-align: center">GAMBAR</th>
                                         <th scope="col">LINK</th>
                                         <th scope="col" style="width: 15%;text-align: center">AKSI</th>
                                     </tr>
@@ -72,13 +72,13 @@
                                             </td>
                                             <td>{{ $slider->link }}</td>
                                             <td class="text-center">
-                                                <button onClick="Delete(this.id)" class="btn btn-sm btn-danger" id="{{ $slider->id }}">
+                                                <button onClick="Delete(this.id)" class="btn btn-sm btn-red" id="{{ $slider->id }}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
-                                    @empty
 
+                                    @empty
                                         <div class="alert alert-danger">
                                             Data Belum Tersedia!
                                         </div>
@@ -102,7 +102,6 @@
         function Delete(id) {
             var id = id;
             var token = $("meta[name='csrf-token']").attr("content");
-
             swal({
                 title: "APAKAH KAMU YAKIN ?",
                 text: "INGIN MENGHAPUS DATA INI!",
@@ -114,7 +113,6 @@
                 dangerMode: true,
             }).then(function(isConfirm) {
                 if (isConfirm) {
-
                     //ajax delete
                     jQuery.ajax({
                         url: "/admin/slider/" + id,
@@ -151,7 +149,6 @@
                             }
                         }
                     });
-
                 } else {
                     return true;
                 }
