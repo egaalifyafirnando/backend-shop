@@ -126,8 +126,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard.index') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('assets/img/brand.png') }}">
+                    <img style="width: 40px;" src="{{ asset('assets/img/company.png') }}">
                 </div>
+                <div class="sidebar-brand-text mx-3"><img style="width: 130px;" src="{{ asset('assets/img/brand.png') }}"></div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
